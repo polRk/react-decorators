@@ -8,6 +8,11 @@ action "Install" {
   args = "install"
 }
 
+action "Link" {
+  uses = "actions/npm@master"
+  args = "link"
+}
+
 action "Lint" {
   needs = "Install"
   uses = "actions/npm@master"
