@@ -1,8 +1,6 @@
 import * as execa from 'execa'
 import * as path from 'path'
 
-console.log(process.cwd())
-
 const oldCwd = process.cwd
 
 describe('Check file generation', () => {
