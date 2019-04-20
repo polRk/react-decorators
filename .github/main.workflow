@@ -7,6 +7,7 @@ action "Install" {
   uses = "actions/npm@master"
   args = "install"
 }
+
 action "Lint" {
   needs = "Install"
   uses = "actions/npm@master"
@@ -26,7 +27,7 @@ action "Link" {
 }
 
 action "Test" {
-  needs = "Lint"
+  needs = "Link"
   uses = "actions/npm@master"
   args = "run test"
 }
