@@ -26,14 +26,8 @@ action "Link" {
   args = "link"
 }
 
-action "Test" {
-  needs = "Link"
-  uses = "actions/npm@master"
-  args = "run test"
-}
-
 action "Tag" {
-  needs = "Test"
+  needs = "Link"
   uses = "actions/bin/filter@master"
   args = "tag"
 }
