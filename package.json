@@ -1,0 +1,65 @@
+{
+  "name": "@polrk/wizard",
+  "version": "1.0.0",
+  "description": "Wizard boilerplate typescript project",
+  "main": "lib/cli.js",
+  "types": "lib/cli.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "wizard -h"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polRk/react-decorators.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "decorators"
+  ],
+  "author": {
+    "name": "polRk",
+    "email": "polrkov.tm@gmail.com",
+    "url": "https://polrk.com"
+  },
+  "license": "MIT",
+  "bin": {
+    "wizard": "./lib/cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/polRk/wizard/issues"
+  },
+  "homepage": "https://github.com/polRk/wizard#readme",
+  "devDependencies": {
+    "@types/execa": "^0.9.0",
+    "@types/jest": "^24.0.11",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^11.13.5",
+    "jest": "^24.7.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.17.0",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "execa": "^1.0.0",
+    "listr": "^0.14.3",
+    "minimist": "^1.2.0",
+    "rxjs": "^6.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,ts,tsx,css,scss,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
