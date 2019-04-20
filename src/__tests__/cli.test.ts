@@ -6,11 +6,13 @@ const oldCwd = process.cwd
 describe('Check file generation', () => {
   beforeEach(async () => {
     await execa('mkdir', ['test'])
+    await execa('npm', ['link'])
     process.cwd = () => path.join(oldCwd(), 'test')
   })
 
   afterAll(async () => {
     await execa('rm', ['-rf', 'test'])
+    await execa('npm', ['unlink'])
     process.cwd = () => oldCwd()
   })
 
