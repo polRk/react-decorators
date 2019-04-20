@@ -9,12 +9,13 @@ action "Install" {
 }
 
 action "Link" {
+  needs = "Install"
   uses = "actions/npm@master"
   args = "link"
 }
 
 action "Lint" {
-  needs = "Install"
+  needs = "Link"
   uses = "actions/npm@master"
   args = "run lint"
 }
