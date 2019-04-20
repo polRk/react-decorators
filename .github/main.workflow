@@ -7,17 +7,22 @@ action "Install" {
   uses = "actions/npm@master"
   args = "install"
 }
-
-action "Link" {
+action "Lint" {
   needs = "Install"
   uses = "actions/npm@master"
-  args = "link"
+  args = "run lint"
 }
 
-action "Lint" {
-  needs = "Link"
+action "Build" {
+  needs = "Lint"
   uses = "actions/npm@master"
-  args = "run lint"
+  args = "run build"
+}
+
+action "Link" {
+  needs = "Build"
+  uses = "actions/npm@master"
+  args = "link"
 }
 
 action "Test" {
@@ -26,14 +31,8 @@ action "Test" {
   args = "run test"
 }
 
-action "Build" {
-  needs = "Test"
-  uses = "actions/npm@master"
-  args = "run build"
-}
-
 action "Tag" {
-  needs = "Build"
+  needs = "Test"
   uses = "actions/bin/filter@master"
   args = "tag"
 }
