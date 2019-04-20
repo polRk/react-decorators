@@ -20,14 +20,8 @@ action "Build" {
   args = "run build"
 }
 
-action "Link" {
-  needs = "Build"
-  uses = "actions/npm@master"
-  args = "link"
-}
-
 action "Test" {
-  needs = "Link"
+  needs = "Build"
   uses = "actions/npm@master"
   args = "run test"
 }
