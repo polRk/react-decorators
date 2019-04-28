@@ -85,16 +85,14 @@ const tasks = new Listr([
         observer.next('jest.config.js')
         fs.writeFile(
           path.join(process.cwd(), 'jest.config.js'),
-          jsonSave(
-            (module.exports = {
-              roots: ['<rootDir>/src'],
-              transform: {
-                '^.+\\.tsx?$': 'ts-jest',
-              },
-              testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-              moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-            })
-          ),
+          `module.exports = {
+            roots: ['<rootDir>/src'],
+            transform: {
+              '^.+\\.tsx?$': 'ts-jest',
+            },
+            testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+            moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+          }`,
           err => err && observer.error(err)
         )
 
